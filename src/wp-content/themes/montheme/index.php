@@ -4,12 +4,14 @@
 <p>Welcome on <?php wp_title(); ?></p>
 
 <h2>Test mes articles</h2>
-<ul>
-    <?php if (have_posts()) : ?>
+<?php if (have_posts()) : ?>
+
+    <div class="row">
+
         <?php while (have_posts()) : the_post(); ?>
-        
-        <?php 
-        /* 
+
+            <?php
+            /* 
         Debug de variables globales
 
         global $post;
@@ -19,17 +21,24 @@
         echo '<br>';
         var_dump($wp_query);
         die(); */
-        ?>
+            ?>
 
-            <li>
-                <a href="<?php the_permalink() ?>">
-                    <?php the_title() ?>
-                </a>
-                 - 
-                <?php the_author() ?>
-            </li>
-
+            <div class="col-sm-4">
+                <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php the_title() ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><?php the_category() ?></h6>
+                        <p class="card-text">
+                            <?php the_excerpt() ?>
+                        </p>
+                        <a href="<?php the_permalink() ?>" class="card-link">Voir plus</a>
+                    </div>
+                </div>
+            </div>
         <?php endwhile; ?>
-    <?php endif; ?>
-</ul>
+    </div>
+<?php else : ?>
+    <h1>Il n'y a as d'articles</h1>
+<?php endif; ?>
 <?php get_footer() ?>
