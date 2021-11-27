@@ -7,7 +7,7 @@
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
             <h1><?php the_title() ?></h1>
-            <img src="<?php the_post_thumbnail_url() ?>" alt="" style="width: 100%; height: auto">
+            <img class="mb-4" src="<?php the_post_thumbnail_url() ?>" alt="" style="margin: 0 15%; width: 70%; height: auto">
             <?php the_content() ?>
 
         <?php endwhile;
